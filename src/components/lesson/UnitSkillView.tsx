@@ -14,6 +14,8 @@ import {
   ToggleReveal,
   VocabCard,
 } from "@/components/lesson/ExerciseKit";
+import { Unit2SkillView } from "@/components/lesson/Unit2SkillView";
+
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useCurriculum } from "@/hooks/use-curriculum";
