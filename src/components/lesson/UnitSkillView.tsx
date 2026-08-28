@@ -14,6 +14,8 @@ import {
   ToggleReveal,
   VocabCard,
 } from "@/components/lesson/ExerciseKit";
+import { Unit2SkillView } from "@/components/lesson/Unit2SkillView";
+
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useCurriculum } from "@/hooks/use-curriculum";
@@ -23,9 +25,13 @@ import type { PracticeSkill } from "@/lib/practice";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export function UnitSkillView({ unit, skill }: { unit: number; skill: PracticeSkill }) {
+  // Unit 2 has its own fully sandboxed data + view.
+  if (unit === 2) return <Unit2SkillView skill={skill} />;
+
   const supported = unit === 1;
 
   if (!supported) return <UnitPlaceholder unit={unit} skill={skill} />;
+
   if (skill === "reading") return <ReadingView />;
   if (skill === "vocabulary") return <VocabularyView />;
   if (skill === "grammar") return <GrammarView />;
