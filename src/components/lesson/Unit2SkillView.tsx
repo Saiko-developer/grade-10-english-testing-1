@@ -18,6 +18,8 @@ import {
 } from "@/components/lesson/ExerciseKit";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { GrammarScriptView } from "@/components/lesson/GrammarScriptView";
+import { UNIT2_GRAMMAR } from "@/data/grammar/unit2";
 import { useCurriculumUnit2 } from "@/hooks/use-curriculum-unit2";
 import { getUnit2Lesson } from "@/lib/curriculumUnit2";
 import { getUnitAudio } from "@/lib/localData";
@@ -210,7 +212,7 @@ function VocabularyView2() {
 
 function GrammarView2() {
   const { unit, supplement } = useCurriculumUnit2();
-  const { grammar2C, tense2C, partA2C_translations, partB2C_translations, partC2C_translations } =
+  const { partA2C_translations, partB2C_translations, partC2C_translations } =
     supplement;
   const data = unit.sections[2] as any;
   const partA = data.part_A;
@@ -226,8 +228,7 @@ function GrammarView2() {
         <h2 className="mt-2 text-2xl font-bold leading-tight">{data.topic}</h2>
       </header>
 
-      <GrammarNoteCard title="Adjectival Phrases" note={grammar2C} />
-      <GrammarNoteCard title="Present Simple & Present Continuous" note={tense2C} />
+      <GrammarScriptView grammar={UNIT2_GRAMMAR} />
 
       <ExerciseGroup
         title="Exercise A — Box the adjectival phrase"
@@ -282,56 +283,6 @@ function GrammarView2() {
         </ol>
       </section>
     </div>
-  );
-}
-
-function GrammarNoteCard({
-  title,
-  note,
-}: {
-  title: string;
-  note: {
-    whatMy: string;
-    whenMy: string;
-    whyMy: string;
-    examples: { en: string; phrase: string }[];
-  };
-}) {
-  return (
-    <section className="rounded-2xl border border-border bg-card p-5">
-      <OwlBadge>
-        <p className="font-semibold">ဆရာ ဇီးကွက်ရဲ့ ရှင်းပြချက် — {title} 🦉</p>
-      </OwlBadge>
-      <div className="mt-3 space-y-3 text-sm leading-relaxed">
-        <div className="rounded-lg border border-border bg-background p-3">
-          <p className="text-xs font-semibold text-primary">📘 ဘာလဲ? (What)</p>
-          <p className="mt-1">{note.whatMy}</p>
-        </div>
-        <div className="rounded-lg border border-border bg-background p-3">
-          <p className="text-xs font-semibold text-primary">⏰ ဘယ်အချိန် သုံးလဲ? (When)</p>
-          <p className="mt-1">{note.whenMy}</p>
-        </div>
-        <div className="rounded-lg border border-border bg-background p-3">
-          <p className="text-xs font-semibold text-primary">💡 ဘာကြောင့်? (Why)</p>
-          <p className="mt-1">{note.whyMy}</p>
-        </div>
-        <div className="rounded-lg border border-amber-300 bg-amber-50 p-3 dark:bg-amber-950/30">
-          <p className="text-xs font-semibold">✨ Examples</p>
-          <ul className="mt-1 space-y-1">
-            {note.examples.map((e, i) => {
-              const [before, after] = e.en.split(e.phrase);
-              return (
-                <li key={i} className="text-sm">
-                  {before}
-                  <mark className="rounded bg-amber-200 px-1 dark:bg-amber-700/50">{e.phrase}</mark>
-                  {after}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
-    </section>
   );
 }
 
