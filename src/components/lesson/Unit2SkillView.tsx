@@ -226,8 +226,7 @@ function GrammarView2() {
         <h2 className="mt-2 text-2xl font-bold leading-tight">{data.topic}</h2>
       </header>
 
-      <GrammarNoteCard title="Adjectival Phrases" note={grammar2C} />
-      <GrammarNoteCard title="Present Simple & Present Continuous" note={tense2C} />
+      <GrammarScriptView grammar={UNIT2_GRAMMAR} />
 
       <ExerciseGroup
         title="Exercise A — Box the adjectival phrase"
