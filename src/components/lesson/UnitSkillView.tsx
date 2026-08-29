@@ -14,7 +14,9 @@ import {
   ToggleReveal,
   VocabCard,
 } from "@/components/lesson/ExerciseKit";
+import { GrammarScriptView } from "@/components/lesson/GrammarScriptView";
 import { Unit2SkillView } from "@/components/lesson/Unit2SkillView";
+import { UNIT1_GRAMMAR } from "@/data/grammar/unit1";
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -242,39 +244,7 @@ function GrammarView() {
         <h2 className="mt-2 text-2xl font-bold leading-tight">{data.topic}</h2>
       </header>
 
-      <section className="rounded-2xl border border-border bg-card p-5">
-        <OwlBadge>
-          <p className="font-semibold">ဆရာ ဇီးကွက်ရဲ့ ရှင်းပြချက် 🦉</p>
-        </OwlBadge>
-        <div className="mt-3 space-y-3 text-sm leading-relaxed">
-          <div className="rounded-lg border border-border bg-background p-3">
-            <p className="text-xs font-semibold text-primary">📘 ဘာလဲ? (What)</p>
-            <p className="mt-1">{grammar1C.whatMy}</p>
-          </div>
-          <div className="rounded-lg border border-border bg-background p-3">
-            <p className="text-xs font-semibold text-primary">⏰ ဘယ်အချိန် သုံးလဲ? (When)</p>
-            <p className="mt-1">{grammar1C.whenMy}</p>
-          </div>
-          <div className="rounded-lg border border-border bg-background p-3">
-            <p className="text-xs font-semibold text-primary">💡 ဘာကြောင့်? (Why)</p>
-            <p className="mt-1">{grammar1C.whyMy}</p>
-          </div>
-          <div className="rounded-lg border border-amber-300 bg-amber-50 p-3 dark:bg-amber-950/30">
-            <p className="text-xs font-semibold">✨ Examples</p>
-            <ul className="mt-1 space-y-1">
-              {grammar1C.examples.map((e, i) => (
-                <li key={i} className="text-sm">
-                  {e.en.split(e.apposition)[0]}
-                  <mark className="rounded bg-amber-200 px-1 dark:bg-amber-700/50">
-                    {e.apposition}
-                  </mark>
-                  {e.en.split(e.apposition)[1]}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
+      <GrammarScriptView grammar={UNIT1_GRAMMAR} />
 
       {grammar1C.youtubeId && (
         <section className="rounded-2xl border border-border bg-card p-5">
