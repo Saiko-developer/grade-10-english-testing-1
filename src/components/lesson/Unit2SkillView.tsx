@@ -18,6 +18,8 @@ import {
 } from "@/components/lesson/ExerciseKit";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { GrammarScriptView } from "@/components/lesson/GrammarScriptView";
+import { UNIT2_GRAMMAR } from "@/data/grammar/unit2";
 import { useCurriculumUnit2 } from "@/hooks/use-curriculum-unit2";
 import { getUnit2Lesson } from "@/lib/curriculumUnit2";
 import { getUnitAudio } from "@/lib/localData";
@@ -210,7 +212,7 @@ function VocabularyView2() {
 
 function GrammarView2() {
   const { unit, supplement } = useCurriculumUnit2();
-  const { grammar2C, tense2C, partA2C_translations, partB2C_translations, partC2C_translations } =
+  const { partA2C_translations, partB2C_translations, partC2C_translations } =
     supplement;
   const data = unit.sections[2] as any;
   const partA = data.part_A;
